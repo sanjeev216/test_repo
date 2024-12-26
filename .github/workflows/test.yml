@@ -26,8 +26,19 @@ jobs:
           pip install -r requirements.txt
         shell: cmd
 
-      # Step 4: Run the Python script
-      - name: Run Python script
+      # Step 3: Create C:\test directory if it doesn't exist
+      - name: Create C:\test directory
         run: |
-          python path/to/your_script.py
+          if not exist C:\test mkdir C:\test
+
+      # Step 4: Copy test.py from build folder to C:\test
+      - name: Copy test.py to C:\test
+        run: |
+          copy build\test.py C:\test\test.py
+
+      # Step 5: Run test.py from C:\test directory
+      - name: Run test.py
+        run: |
+          cd C:\test
+          python test.py
         shell: cmd
