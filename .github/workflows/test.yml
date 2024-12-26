@@ -34,7 +34,7 @@ jobs:
       # Step 4: Copy test.py from build folder to C:\test
       - name: Copy test.py to C:\test
         run: |
-          copy mybuild\test.py C:\test\test.py
+          copy test.py C:\test\test.py
 
       # Step 5: Run test.py from C:\test directory
       - name: Run test.py
